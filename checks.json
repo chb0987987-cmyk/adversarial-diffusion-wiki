@@ -1,0 +1,130 @@
+{
+  "date": "2026-11-24",
+  "timezone": "Asia/Taipei",
+  "summary": "結構與證據檢查通過，94 項程式行為檢查通過；瀏覽器啟動受環境權限阻擋，實際排版與操作尚未驗收。",
+  "structure": {
+    "time": "2026-11-24T15:54:51.248772+08:00",
+    "status": "passed",
+    "slides": 14,
+    "minutes": 20,
+    "figures": 12,
+    "source_count": 5,
+    "embedded_evidence": 61,
+    "citation_controls": 44,
+    "unique_cited_evidence": 26,
+    "preserved_original_files": 12,
+    "javascript_syntax": true,
+    "errors": [],
+    "scope": "Structure, evidence identities, SVG XML and source preservation. No browser layout claim."
+  },
+  "behavior": {
+    "status": "passed",
+    "assertions": 94,
+    "scope": "Actual deck JavaScript in a lightweight DOM model. No native-browser rendering, focus, printing or fullscreen claim."
+  },
+  "browser": {
+    "status": "blocked",
+    "reason": "瀏覽器啟動遇到 Windows IPC 存取被拒及自動化啟動 EPERM；未取得實際 HTML 渲染。",
+    "native_layout": "not_verified",
+    "native_interaction": "not_verified",
+    "mobile_layout": "not_verified",
+    "print_layout": "not_verified"
+  },
+  "diagram_review": {
+    "status": "passed_after_revision",
+    "method": "SVG 以標準渲染器產生預覽並檢視",
+    "reviewed": [
+      "d2c-aps",
+      "diffnat-alternating",
+      "workflow"
+    ],
+    "finding": "工作流程圖原本未畫出內容檢查的證據不足回 Wiki 路徑；補上該路徑。 貼片場景起初只以文字標示不同條件，已調整背景、位置與亮度的圖像變因。",
+    "scope": "三張關鍵 SVG 圖；不是 HTML 整頁視覺驗收。",
+    "overview_review": "12 張 SVG 總覽檢視；另放大檢查三張關鍵方法／流程圖。"
+  },
+  "content_review": {
+    "source": "既有 Wiki 概念、比較與局部證據",
+    "source_count": 5,
+    "evidence_used": 26,
+    "preserved_boundaries": [
+      "人物偵測逃避與局部 FP",
+      "DiffAttack 分類與偵測貼片",
+      "生成語意與 person 目標",
+      "t_start 與去噪次數",
+      "AP／accuracy／LPIPS 與局部 ASR"
+    ],
+    "claim_status": "來源結論、研究假設、未知與教學示意分開標示"
+  },
+  "run_events": [
+    {
+      "id": "E01",
+      "node": "環境預檢",
+      "category": "path",
+      "result": "resolved",
+      "event": "原規劃的暫存根目錄不可建立",
+      "action": "改用系統允許的 Temp 路徑"
+    },
+    {
+      "id": "E02",
+      "node": "環境預檢",
+      "category": "encoding",
+      "result": "resolved",
+      "event": "瀏覽程序輸出被預設 CP950 解碼時失敗",
+      "action": "改為明確 UTF-8 與替代非法字元"
+    },
+    {
+      "id": "E03",
+      "node": "瀏覽器驗收",
+      "category": "browser",
+      "result": "blocked",
+      "event": "Chrome 原生啟動遭 IPC 存取拒絕",
+      "action": "保留原因；不宣稱已渲染"
+    },
+    {
+      "id": "E04",
+      "node": "瀏覽器驗收",
+      "category": "browser",
+      "result": "blocked",
+      "event": "Edge 預檢未回傳渲染結果",
+      "action": "不因程序 exit 0 認定通過"
+    },
+    {
+      "id": "E05",
+      "node": "瀏覽器驗收",
+      "category": "browser",
+      "result": "blocked",
+      "event": "實際 HTML 的 Playwright 啟動遇到 spawn EPERM",
+      "action": "完成獨立結構與 DOM 模型檢查，保留原生驗收未通過狀態"
+    },
+    {
+      "id": "E06",
+      "node": "內容與圖文檢查",
+      "category": "diagram",
+      "result": "resolved",
+      "event": "SVG 圖稿缺少內容檢查的來源退回路徑",
+      "action": "補上證據不足回 Wiki 的虛線路徑；重建並重查"
+    },
+    {
+      "id": "E07",
+      "node": "內容與圖文檢查",
+      "category": "diagram",
+      "result": "resolved",
+      "event": "貼片示意場景只以文字標示不同條件，圖像未呈現差異",
+      "action": "調整背景、貼放位置與亮度示意，使圖文一致"
+    }
+  ],
+  "preserved_files_sha256": {
+    "raw\\README.md": "962218190216be644819bb043f3b782d75240c4067e7f4ed29fcb27dfbd63e73",
+    "raw\\papers\\s001-diffusion-to-confusion-icip2025-extracted-text.txt": "61e058858b5dbc7c94aff7db5cb7e3a7209c083818c3855d216110b7a32e7df5",
+    "raw\\papers\\s002-dpatch-extracted-text.txt": "5de743b8f67b27fea5a1e80c02db59b251f480129c65331f48324f4cc8cb4537",
+    "raw\\papers\\s003-naturalistic-physical-patch-extracted-text.txt": "9c2509e9f33af1562f7e72c67c7f4cacc11a72b352950215a6c35c802de0a4c9",
+    "raw\\papers\\s004-diff-nat-extracted-text.txt": "bfa0b90d226a5c27ca0775a35d22702b0bfc7304045d979e327d77c4bf5c7a6d",
+    "raw\\papers\\s005-diffattack-tpami2025-extracted-text.txt": "21bce2c2f0d6f963ae29ea6cadc6dafd09e1b7771f4ce5e5aa5ad72b975e033d",
+    "wiki\\sources\\s001-diffusion-to-confusion-icip2025.md": "820893cdea51ab9056c62590876df5a2d09c2295553b0f0635cd32cd68f86c84",
+    "wiki\\sources\\s002-dpatch.md": "3fff1da1960e4a86d656a97df71d11e2a99ec37b31072a7753f1787dbfece0c6",
+    "wiki\\sources\\s003-naturalistic-physical-patch.md": "6c3bb4e6b23ccf7e05146c6c55522f905b45d2104376e929e557ca5b60f71a20",
+    "wiki\\sources\\s004-diff-nat.md": "aa626a463a943dbd54956d67f070975ff75a671cb5fac13960cd2a0f38c8897a",
+    "wiki\\sources\\s005-diffattack-tpami2025.md": "a0308a17ada98c539203984cf840b31aa8fedac5f0764c065e2515bb3831e9d2",
+    "presentations\\diffusion-to-confusion\\簡報.html": "dcb3e923c2b4b7eb877fd0c9e627f3a64548405fd2e18c7fe2fe158e834ca620"
+  }
+}
